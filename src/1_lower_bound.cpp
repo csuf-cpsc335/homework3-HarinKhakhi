@@ -6,5 +6,22 @@ return the left most index of target element,
 if element does not exist return -1
 */
 int _lower_bound(vector<int> nums, int target){
-    return INT_MAX;
+    int low = 0;
+    int high = nums.size() - 1;
+    int ans = -1;
+
+    while(low <= high){
+        int mid = (low + high) / 2;
+
+        if(target < nums[mid])
+            high = mid-1;
+        else if(target > nums[mid])
+            low = mid+1;
+        else{
+            ans = mid;
+            high = mid-1;
+        }
+    }
+
+    return ans;
 }
